@@ -1,2 +1,8 @@
 
 .DS_Store
+
+build/
+
+.eslintcache
+
+node_modules/
