@@ -1,11 +1,10 @@
 import './App.css';
-// import AboutPage from './aboutPage/aboutPage.js';
-import Blog from "./Blog.js";
+import Homepage from './Homepage';
 
 function App() {
   return (
-    <Blog />
-  );
+    <Homepage />
+  )
 }
 
 export default App;
