@@ -4,7 +4,6 @@ import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -44,7 +43,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const projects = {
+  "Maze Generator": {
+    "Description": "This is a Maze Generator written in Java. The Maze Generator create and solves a maze of any given size using Depth first search",
+    "LinkToCode": "https://github.com/ameet2r/Maze_Generator",
+    "LinkToDemo": "https://ameet2r.github.io/Maze_Generator/"
+  },
+  "String Checker": {
+    "Description": "This is a tool to compare equivalency of two strings. Such a tool is helpful when comparing SHA keys to ensure that the software you are downloading has not been tampered with.",
+    "LinkToCode": "https://github.com/ameet2r/StringChecker",
+    "LinkToDemo": "https://ameet2r.github.io/StringChecker/"
+  },
+};
 
 export default function Homepage() {
   const classes = useStyles();
@@ -64,62 +74,44 @@ export default function Homepage() {
         <div className={classes.heroContent}>
           <Container maxWidth="sm">
             <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-              Album layout
+              My Projects
             </Typography>
             <Typography variant="h5" align="center" color="textSecondary" paragraph>
-              Something short and leading about the collection below—its contents, the creator, etc.
-              Make it short and sweet, but not too short so folks don&apos;t simply skip over it
-              entirely.
+              Below are a few of my projects that I found helpful or interesting.
             </Typography>
-            <div className={classes.heroButtons}>
-              <Grid container spacing={2} justify="center">
-                <Grid item>
-                  <Button variant="contained" color="primary">
-                    Main call to action
-                  </Button>
-                </Grid>
-                <Grid item>
-                  <Button variant="outlined" color="primary">
-                    Secondary action
-                  </Button>
-                </Grid>
-              </Grid>
-            </div>
           </Container>
         </div>
         <Container className={classes.cardGrid} maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={4}>
-            {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
-                  <CardMedia
-                    className={classes.cardMedia}
-                    image="https://source.unsplash.com/random"
-                    title="Image title"
-                  />
-                  <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      Heading
-                    </Typography>
-                    <Typography>
-                      This is a media card. You can use this section to describe the content.
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small" color="primary">
-                      View
-                    </Button>
-                    <Button size="small" color="primary">
-                      Edit
-                    </Button>
-                  </CardActions>
-                </Card>
-              </Grid>
-            ))}
+            {
+              Object.keys(projects).map((project, index) => (
+                <Grid item key={project} xs={12} sm={6} md={4}>
+                  <Card className={classes.card}>
+                    <CardContent className={classes.cardContent}>
+                      <Typography gutterBottom variant="h5" component="h2">
+                        {project}
+                      </Typography>
+                      <Typography>
+                        {projects[project]["Description"]}
+                      </Typography>
+                    </CardContent>
+                    <CardActions>
+                      <Button size="small" color="primary" href={projects[project]["LinkToCode"]}>
+                        Code
+                      </Button>
+                      <Button size="small" color="primary" href={projects[project]["LinkToDemo"]}>
+                        Demo
+                      </Button>
+                    </CardActions>
+                  </Card>
+                </Grid>
+              ))
+            }
           </Grid>
         </Container>
       </main>
     </React.Fragment>
   );
 }
+
