@@ -67,7 +67,6 @@ export default function Homepage() {
         </Toolbar>
       </AppBar>
       <main>
-        {/* Hero unit */}
         <div className={classes.heroContent}>
           <Container maxWidth="sm">
             <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
@@ -79,7 +78,6 @@ export default function Homepage() {
           </Container>
         </div>
         <Container className={classes.cardGrid} maxWidth="md">
-          {/* End hero unit */}
           <Grid container spacing={4}>
             {
               Object.keys(projects).map((project, index) => (

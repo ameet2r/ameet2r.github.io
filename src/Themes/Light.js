@@ -84,6 +84,13 @@ const light = createMuiTheme({
             focusOpacity: 0.12,
             activatedOpacity: 0.12
         }
+    },
+    overrides: {
+        MuiButton: {
+            textPrimary: {
+                color: "#000000"
+            }
+        }
     }
 });
 

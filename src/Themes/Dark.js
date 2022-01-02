@@ -9,7 +9,7 @@ const dark = createMuiTheme({
         },
         primary: {
             light: "#7986cb",
-            main: "#3f51b6",
+            main: "#303030",
             dark: "#303f9f",
             contrastText: "#fff"
         },
@@ -84,6 +84,13 @@ const dark = createMuiTheme({
             focus: "rgba(255, 255, 255, 0.12)",
             focusOpacity: 0.12,
             activatedOpacity: 0.24
+        }
+    },
+    overrides: {
+        MuiButton: {
+            textPrimary: {
+                color: "#ffffff"
+            }
         }
     }
 });
