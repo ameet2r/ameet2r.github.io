@@ -121,10 +121,7 @@ async def contact_endpoint(request: ContactRequest):
 async def root():
     """Root endpoint."""
     return {
-        "message": "Welcome to DojoPass API",
-        "version": settings.version,
-        "docs": "/docs",
-        "redoc": "/redoc"
+        "message": "Welcome to API"
     }
 
 @app.get("/health")
