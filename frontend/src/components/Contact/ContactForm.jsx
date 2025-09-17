@@ -101,6 +101,8 @@ const ContactForm = () => {
     }
 
     try {
+      console.log(import.meta.env.VITE_BACKEND_API);
+      console.log(`${import.meta.env.VITE_BACKEND_API}/contact`);
       const response = await fetch(`${import.meta.env.VITE_BACKEND_API}/contact`, {
         method: 'POST',
         headers: {
