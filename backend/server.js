@@ -1,8 +1,18 @@
-import { Resend } from 'resend';
+const express = require('express');
+const cors = require('cors');
+const { Resend } = require('resend');
+require('dotenv').config();
 
-const resend = new Resend(process.env.REACT_APP_RESEND_API_KEY);
+const app = express();
+const port = process.env.PORT || 3001;
 
-export const sendContactEmail = async (formData) => {
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+app.use(cors());
+app.use(express.json());
+
+// Contact email function
+const sendContactEmail = async (formData) => {
   try {
     const {
       name,
@@ -47,7 +57,7 @@ export const sendContactEmail = async (formData) => {
           <h1 style="color: #3f51b5; margin-bottom: 30px; text-align: center; border-bottom: 2px solid #3f51b5; padding-bottom: 15px;">
             New Quote Request
           </h1>
-          
+
           <div style="margin-bottom: 25px;">
             <h2 style="color: #333; margin-bottom: 15px; font-size: 18px;">Contact Information</h2>
             <table style="width: 100%; border-collapse: collapse;">
@@ -132,8 +142,8 @@ This quote request was sent from your portfolio website.
     `;
 
     const result = await resend.emails.send({
-      from: 'Portfolio Contact <noreply@yourdomain.com>', // You'll need to update this with your verified domain
-      to: [process.env.REACT_APP_CONTACT_EMAIL],
+      from: process.env.FROM_EMAIL, // Use Resend's default verified email or your own
+      to: [process.env.CONTACT_EMAIL],
       subject: `New Quote Request from ${name} - ${formatProjectType(projectType)}`,
       html: emailHtml,
       text: emailText,
@@ -143,26 +153,34 @@ This quote request was sent from your portfolio website.
     return { success: true, data: result };
   } catch (error) {
     console.error('Error sending email:', error);
+    console.error('Error details:', {
+      message: error.message,
+      statusCode: error.statusCode,
+      name: error.name
+    });
     return { success: false, error: error.message };
   }
 };
 
-// For serverless function deployment (Vercel/Netlify)
-export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
-  }
-
+// API route
+app.post('/api/contact', async (req, res) => {
+  console.log('Received contact request:', req.body);
   try {
     const result = await sendContactEmail(req.body);
-    
+
     if (result.success) {
+      console.log('Email sent successfully');
       return res.status(200).json({ message: 'Email sent successfully' });
     } else {
-      return res.status(500).json({ error: 'Failed to send email' });
+      console.error('Failed to send email:', result.error);
+      return res.status(500).json({ error: 'Failed to send email', details: result.error });
     }
   } catch (error) {
     console.error('API Error:', error);
-    return res.status(500).json({ error: 'Internal server error' });
+    return res.status(500).json({ error: 'Internal server error', details: error.message });
   }
-}
+});
+
+app.listen(port, () => {
+  console.log(`Backend server running on port ${port}`);
+});

@@ -7,6 +7,13 @@ export default defineConfig({
   server: {
     port: 5173,
     host: true, // This allows external connections (useful for Docker)
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3001',
+        changeOrigin: true,
+        secure: false,
+      },
+    },
   },
   build: {
     outDir: 'build',
