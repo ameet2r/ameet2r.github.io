@@ -1,2 +1,2 @@
 [build]
-builder = "docker-compose"
+dockerComposePath = "docker-compose.yml"
