@@ -27,6 +27,9 @@ ENV BACKEND_API=$BACKEND_API
 # Build the app
 RUN npm run build
 
+# Debug: List contents of /app to check if build output exists
+RUN ls -la /app
+
 # ==============================
 # Stage 2: Serve with Nginx
 # ==============================
