@@ -19,10 +19,10 @@ COPY . .
 # Build-time environment variables
 # ------------------------------
 # ARG variables must match the VITE_ prefix for Vite
-ARG BACKEND_API
+ARG VITE_BACKEND_API
 
 # Export them so npm build sees them
-ENV BACKEND_API=$BACKEND_API
+ENV VITE_BACKEND_API=$VITE_BACKEND_API
 
 # Build the app
 RUN npm run build
