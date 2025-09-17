@@ -119,8 +119,18 @@ async def contact_endpoint(request: ContactRequest):
 
 @app.get("/")
 async def root():
+    """Root endpoint."""
+    return {
+        "message": "Welcome to DojoPass API",
+        "version": settings.version,
+        "docs": "/docs",
+        "redoc": "/redoc"
+    }
+
+@app.get("/health")
+async def health():
     """Health check endpoint"""
-    return {"message": "Portfolio Contact API is running"}
+    return {"status": "healthy"}
 
 if __name__ == "__main__":
     import uvicorn
