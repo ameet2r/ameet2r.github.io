@@ -51,74 +51,6 @@ const sendContactEmail = async (formData) => {
       return budgets[budget] || budget;
     };
 
-    const emailHtml = `
-      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9;">
-        <div style="background-color: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
-          <h1 style="color: #3f51b5; margin-bottom: 30px; text-align: center; border-bottom: 2px solid #3f51b5; padding-bottom: 15px;">
-            New Quote Request
-          </h1>
-
-          <div style="margin-bottom: 25px;">
-            <h2 style="color: #333; margin-bottom: 15px; font-size: 18px;">Contact Information</h2>
-            <table style="width: 100%; border-collapse: collapse;">
-              <tr>
-                <td style="padding: 8px 0; font-weight: bold; color: #555; width: 120px;">Name:</td>
-                <td style="padding: 8px 0; color: #333;">${name}</td>
-              </tr>
-              <tr>
-                <td style="padding: 8px 0; font-weight: bold; color: #555;">Email:</td>
-                <td style="padding: 8px 0; color: #333;"><a href="mailto:${email}" style="color: #3f51b5; text-decoration: none;">${email}</a></td>
-              </tr>
-              ${company ? `
-              <tr>
-                <td style="padding: 8px 0; font-weight: bold; color: #555;">Company:</td>
-                <td style="padding: 8px 0; color: #333;">${company}</td>
-              </tr>
-              ` : ''}
-              ${phone ? `
-              <tr>
-                <td style="padding: 8px 0; font-weight: bold; color: #555;">Phone:</td>
-                <td style="padding: 8px 0; color: #333;"><a href="tel:${phone}" style="color: #3f51b5; text-decoration: none;">${phone}</a></td>
-              </tr>
-              ` : ''}
-            </table>
-          </div>
-
-          <div style="margin-bottom: 25px;">
-            <h2 style="color: #333; margin-bottom: 15px; font-size: 18px;">Project Details</h2>
-            <table style="width: 100%; border-collapse: collapse;">
-              <tr>
-                <td style="padding: 8px 0; font-weight: bold; color: #555; width: 120px;">Project Type:</td>
-                <td style="padding: 8px 0; color: #333;">${formatProjectType(projectType)}</td>
-              </tr>
-              <tr>
-                <td style="padding: 8px 0; font-weight: bold; color: #555;">Budget:</td>
-                <td style="padding: 8px 0; color: #333;">${formatBudget(budget)}</td>
-              </tr>
-              ${timeline ? `
-              <tr>
-                <td style="padding: 8px 0; font-weight: bold; color: #555;">Timeline:</td>
-                <td style="padding: 8px 0; color: #333;">${timeline}</td>
-              </tr>
-              ` : ''}
-            </table>
-          </div>
-
-          <div style="margin-bottom: 25px;">
-            <h2 style="color: #333; margin-bottom: 15px; font-size: 18px;">Project Description</h2>
-            <div style="background-color: #f8f9fa; padding: 20px; border-radius: 6px; border-left: 4px solid #3f51b5;">
-              <p style="margin: 0; line-height: 1.6; color: #333;">${description.replace(/\n/g, '<br>')}</p>
-            </div>
-          </div>
-
-          <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
-            <p style="color: #666; margin: 0; font-size: 14px;">
-              This quote request was sent from your portfolio website.
-            </p>
-          </div>
-        </div>
-      </div>
-    `;
 
     const emailText = `
 New Quote Request
@@ -145,7 +77,6 @@ This quote request was sent from your portfolio website.
       from: process.env.FROM_EMAIL, // Use Resend's default verified email or your own
       to: [process.env.CONTACT_EMAIL],
       subject: `New Quote Request from ${name} - ${formatProjectType(projectType)}`,
-      html: emailHtml,
       text: emailText,
       replyTo: email,
     });
