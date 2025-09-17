@@ -1,6 +1,6 @@
 import './App.css';
-import Homepage from './Homepage';
-import ThemeProvider from './Themes/ThemeProvider';
+import Homepage from './Homepage.jsx';
+import ThemeProvider from './Themes/ThemeProvider.jsx';
 
 function App() {
   return (
