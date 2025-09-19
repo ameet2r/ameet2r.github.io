@@ -92,6 +92,14 @@ const projectsData = [
     highlights: ['Security Focus', 'Clean UI/UX', 'Cross-Platform']
   },
   {
+    title: 'Motorcycle Weather',
+    description: 'Weather forecasting service providing detailed meteorological data for motorcycle enthusiasts and outdoor adventurers across US territories.',
+    technologies: ['FastAPI', 'RESTful API', 'Python', 'Docker', 'React', 'Material-UI', 'JavaScript', 'SPA'],
+    codeLink: 'https://github.com/ameet2r/Motorcycle_Weather_UI',
+    demoLink: 'https://weather.toorforge.com',
+    highlights: ['FastAPI', 'RESTful API', 'Python', 'Docker', 'React']
+  },
+  {
     title: 'Professional Portfolio',
     description: 'This responsive portfolio website showcasing full-stack development capabilities. Built with React, Material-UI, and modern web technologies. Features contact form integration with email services and professional design patterns.',
     technologies: ['React', 'Material-UI', 'JavaScript', 'Responsive Design', 'Email Integration'],
