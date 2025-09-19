@@ -23,6 +23,7 @@ app = FastAPI(title="Portfolio Contact API", description="Backend API for portfo
 cors_origins = os.getenv("CORS_ORIGINS")
 if cors_origins:
     allow_origins = [origin.strip() for origin in cors_origins.split(",")]
+    print(f"CORS allowed origins: {allow_origins}")
 else:
     allow_origins = ["*"]
     print("Warning: CORS_ORIGINS not set, allowing all origins")
