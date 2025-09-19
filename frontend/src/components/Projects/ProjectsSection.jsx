@@ -76,6 +76,14 @@ const useStyles = makeStyles((theme) => ({
 
 const projectsData = [
   {
+    title: 'Motorcycle Weather',
+    description: 'Weather forecasting service providing detailed meteorological data for motorcycle enthusiasts and outdoor adventurers across US territories.',
+    technologies: ['FastAPI', 'RESTful API', 'Python', 'Docker', 'React', 'Material-UI', 'JavaScript', 'SPA'],
+    codeLink: 'https://github.com/ameet2r/Motorcycle_Weather_UI',
+    demoLink: 'https://weather.toorforge.com',
+    highlights: ['FastAPI', 'RESTful API', 'Python', 'Docker', 'React']
+  },
+  {
     title: 'Maze Generator & Solver',
     description: 'An interactive maze generation and solving application built with Java. Demonstrates algorithmic thinking and problem-solving skills using Depth-First Search for both maze creation and pathfinding. Features customizable maze sizes and real-time visualization.',
     technologies: ['Java', 'Algorithms', 'DFS', 'GUI', 'Data Structures'],
@@ -90,14 +98,6 @@ const projectsData = [
     codeLink: 'https://github.com/ameet2r/StringChecker',
     demoLink: 'https://ameet2r.github.io/StringChecker/',
     highlights: ['Security Focus', 'Clean UI/UX', 'Cross-Platform']
-  },
-  {
-    title: 'Motorcycle Weather',
-    description: 'Weather forecasting service providing detailed meteorological data for motorcycle enthusiasts and outdoor adventurers across US territories.',
-    technologies: ['FastAPI', 'RESTful API', 'Python', 'Docker', 'React', 'Material-UI', 'JavaScript', 'SPA'],
-    codeLink: 'https://github.com/ameet2r/Motorcycle_Weather_UI',
-    demoLink: 'https://weather.toorforge.com',
-    highlights: ['FastAPI', 'RESTful API', 'Python', 'Docker', 'React']
   },
   {
     title: 'Professional Portfolio',
