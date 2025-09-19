@@ -8,20 +8,40 @@ from dotenv import load_dotenv
 # Load environment variables
 load_dotenv()
 
+# Check required environment variables
+required_env_vars = ["RESEND_API_KEY", "CONTACT_EMAIL", "FROM_EMAIL", "CORS_ORIGINS"]
+missing_vars = [var for var in required_env_vars if not os.getenv(var)]
+if missing_vars:
+    print(f"Warning: Missing environment variables: {', '.join(missing_vars)}")
+else:
+    print("All required environment variables are set.")
+
 # Initialize FastAPI app
 app = FastAPI(title="Portfolio Contact API", description="Backend API for portfolio contact form")
 
 # Configure CORS
+cors_origins = os.getenv("CORS_ORIGINS")
+if cors_origins:
+    allow_origins = [origin.strip() for origin in cors_origins.split(",")]
+else:
+    allow_origins = ["*"]
+    print("Warning: CORS_ORIGINS not set, allowing all origins")
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=os.getenv("CORS_ORIGINS"),  # In production, specify your frontend URL
+    allow_origins=allow_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
 # Initialize Resend
-resend.api_key = os.getenv("RESEND_API_KEY")
+resend_api_key = os.getenv("RESEND_API_KEY")
+if resend_api_key:
+    resend.api_key = resend_api_key
+    print("Resend API key configured.")
+else:
+    print("Error: RESEND_API_KEY not set.")
 
 # Pydantic models
 class ContactRequest(BaseModel):
@@ -62,6 +82,19 @@ def format_budget(budget: str) -> str:
 async def send_contact_email(form_data: ContactRequest):
     """Send contact email using Resend"""
     try:
+        print("Attempting to send contact email...")
+
+        from_email = os.getenv("FROM_EMAIL")
+        contact_email = os.getenv("CONTACT_EMAIL")
+
+        if not from_email:
+            raise ValueError("FROM_EMAIL environment variable not set")
+        if not contact_email:
+            raise ValueError("CONTACT_EMAIL environment variable not set")
+
+        print(f"From email: {from_email}")
+        print(f"To email: {contact_email}")
+
         # Format email content
         email_text = f"""
 New Quote Request
@@ -84,18 +117,25 @@ Project Description:
 This quote request was sent from your portfolio website.
         """
 
+        print("Formatted email content successfully.")
+
         # Send email using Resend
+        print("Sending email via Resend...")
         result = resend.Emails.send({
-            "from": os.getenv("FROM_EMAIL"),
-            "to": [os.getenv("CONTACT_EMAIL")],
+            "from": from_email,
+            "to": [contact_email],
             "subject": f"New Quote Request from {form_data.name} - {format_project_type(form_data.projectType)}",
             "text": email_text,
             "reply_to": form_data.email,
         })
 
+        print(f"Resend API response: {result}")
         return {"success": True, "data": result}
     except Exception as error:
         print(f"Error sending email: {error}")
+        print(f"Error type: {type(error).__name__}")
+        import traceback
+        print(f"Traceback: {traceback.format_exc()}")
         return {"success": False, "error": str(error)}
 
 # API endpoints
