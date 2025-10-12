@@ -175,17 +175,19 @@ const ProjectsSection = () => {
                 </CardContent>
                 
                 <CardActions className={classes.cardActions}>
-                  <Button
-                    size="small"
-                    color="primary"
-                    href={project.codeLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    startIcon={<GitHub />}
-                    className={classes.actionButton}
-                  >
-                    Code
-                  </Button>
+                  {project.codeLink && project.codeLink !== '#' && (
+                    <Button
+                      size="small"
+                      color="primary"
+                      href={project.codeLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      startIcon={<GitHub />}
+                      className={classes.actionButton}
+                    >
+                      Code
+                    </Button>
+                  )}
                   <Button
                     size="small"
                     color="primary"
