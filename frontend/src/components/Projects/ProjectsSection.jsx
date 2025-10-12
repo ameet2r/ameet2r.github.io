@@ -78,10 +78,20 @@ const projectsData = [
   {
     title: 'Motorcycle Weather',
     description: 'Weather forecasting service providing detailed meteorological data for motorcycle enthusiasts and outdoor adventurers across US territories.',
-    technologies: ['FastAPI', 'RESTful API', 'Python', 'Docker', 'React', 'Material-UI', 'JavaScript', 'SPA'],
-    codeLink: 'https://github.com/ameet2r/Motorcycle_Weather_UI',
+    technologies: ['FastAPI', 'Python', 'Docker', 'React', 'Material-UI', 'JavaScript', 'SPA'],
+    codeLink: '#',
     demoLink: 'https://weather.toorforge.com',
-    highlights: ['FastAPI', 'RESTful API', 'Python', 'Docker', 'React']
+    highlights: ['FastAPI', 'Firebase/Firestore', 'Python', 'Docker', 'React']
+  },
+  {
+    title: 'Workout Tracker',
+    description: ' A full-stack fitness application that enables users to create custom workout plans, track exercises in real-time, and visualize progress through analytics dashboards. Built with React and FastAPI, the app features Firebase authentication, Firestore database integration, Garmin workout data import capabilities, and comprehensive progress tracking with interactive charts. Containerized with Docker and deployed on Railway for production-ready scalability.',
+    technologies:  ["React", "Vite", "Material-UI (MUI)", "React Router", "Firebase Authentication", "Firebase Admin SDK", "Firestore", "MUI X-Charts",
+  "Leaflet", "React-Leaflet", "Python", "FastAPI", "Pydantic", "Uvicorn", "Pytest", "Docker", "Docker Compose", "Nginx", "Railway",
+  "Git", "JavaScript", "HTML", "CSS"],
+    codeLink: '#',
+    demoLink: 'https://workout.toorforge.com',
+    highlights: ['FastAPI', 'Firebase/Firestore', 'Python', 'Docker', 'React']
   },
   {
     title: 'Maze Generator & Solver',
