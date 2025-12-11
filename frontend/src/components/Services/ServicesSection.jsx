@@ -162,7 +162,7 @@ const ServicesSection = () => {
         
         <Grid container spacing={4}>
           {servicesData.map((service, index) => (
-            <Grid item xs={12} md={6} key={index}>
+            <Grid size={{ xs: 12, md: 6 }} key={index}>
               <Card className={classes.serviceCard}>
                 <CardContent className={classes.cardContent}>
                   <Box className={classes.serviceIcon}>

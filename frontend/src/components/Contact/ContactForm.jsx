@@ -142,13 +142,13 @@ const ContactForm = () => {
 
         <form onSubmit={handleSubmit(onSubmit)}>
           <Grid container spacing={3}>
-            <Grid item xs={12} sm={6}>
+            <Grid size={{ xs: 12, sm: 6 }}>
               <TextField
                 fullWidth
                 label="Full Name"
                 variant="outlined"
                 className={classes.formField}
-                {...register('name', { 
+                {...register('name', {
                   required: 'Name is required',
                   minLength: { value: 2, message: 'Name must be at least 2 characters' }
                 })}
@@ -157,14 +157,14 @@ const ContactForm = () => {
               />
             </Grid>
 
-            <Grid item xs={12} sm={6}>
+            <Grid size={{ xs: 12, sm: 6 }}>
               <TextField
                 fullWidth
                 label="Email Address"
                 type="email"
                 variant="outlined"
                 className={classes.formField}
-                {...register('email', { 
+                {...register('email', {
                   required: 'Email is required',
                   pattern: {
                     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
@@ -176,7 +176,7 @@ const ContactForm = () => {
               />
             </Grid>
 
-            <Grid item xs={12} sm={6}>
+            <Grid size={{ xs: 12, sm: 6 }}>
               <TextField
                 fullWidth
                 label="Company (Optional)"
@@ -186,7 +186,7 @@ const ContactForm = () => {
               />
             </Grid>
 
-            <Grid item xs={12} sm={6}>
+            <Grid size={{ xs: 12, sm: 6 }}>
               <TextField
                 fullWidth
                 label="Phone (Optional)"
@@ -196,7 +196,7 @@ const ContactForm = () => {
               />
             </Grid>
 
-            <Grid item xs={12} sm={6}>
+            <Grid size={{ xs: 12, sm: 6 }}>
               <FormControl fullWidth variant="outlined" className={classes.formField}>
                 <InputLabel>Project Type</InputLabel>
                 <Select
@@ -220,7 +220,7 @@ const ContactForm = () => {
               </FormControl>
             </Grid>
 
-            <Grid item xs={12} sm={6}>
+            <Grid size={{ xs: 12, sm: 6 }}>
               <FormControl fullWidth variant="outlined" className={classes.formField}>
                 <InputLabel>Budget Range</InputLabel>
                 <Select
@@ -244,7 +244,7 @@ const ContactForm = () => {
               </FormControl>
             </Grid>
 
-            <Grid item xs={12}>
+            <Grid size={{ xs: 12 }}>
               <TextField
                 fullWidth
                 label="Project Description"
@@ -253,7 +253,7 @@ const ContactForm = () => {
                 variant="outlined"
                 className={classes.formField}
                 placeholder="Please describe your project requirements, timeline, and any specific technologies you'd like to use..."
-                {...register('description', { 
+                {...register('description', {
                   required: 'Project description is required',
                   minLength: { value: 20, message: 'Please provide more details (at least 20 characters)' }
                 })}
@@ -262,7 +262,7 @@ const ContactForm = () => {
               />
             </Grid>
 
-            <Grid item xs={12}>
+            <Grid size={{ xs: 12 }}>
               <TextField
                 fullWidth
                 label="Timeline"
@@ -273,7 +273,7 @@ const ContactForm = () => {
               />
             </Grid>
 
-            <Grid item xs={12}>
+            <Grid size={{ xs: 12 }}>
               <Box display="flex" justifyContent="center">
                 <Button
                   type="submit"

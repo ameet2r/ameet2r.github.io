@@ -83,7 +83,7 @@ const Footer = () => {
     <footer className={classes.footer}>
       <Container maxWidth="lg">
         <Grid container spacing={4} className={classes.footerContent}>
-          <Grid item xs={12} md={6}>
+          <Grid size={{ xs: 12, md: 6 }}>
             <Typography variant="h5" className={classes.footerTitle}>
               Ameet Toor
             </Typography>
@@ -94,7 +94,7 @@ const Footer = () => {
             </Typography>
           </Grid>
 
-          <Grid item xs={12} md={6}>
+          <Grid size={{ xs: 12, md: 6 }}>
             <Typography variant="h6" className={classes.footerTitle}>
               Quick Links
             </Typography>

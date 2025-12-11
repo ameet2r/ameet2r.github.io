@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ThemeProvider as MThemeProvider, StyledEngineProvider } from '@mui/material/styles';
+import { ThemeProvider as StylesThemeProvider } from '@mui/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import dark from './Dark';
 import light from './Light';
@@ -32,12 +33,15 @@ const useThemeDetector = () => {
  */
 export default function ThemeProvider(props) {
     const isDarkTheme = useThemeDetector();
+    const theme = isDarkTheme ? dark : light;
 
     return (
         <StyledEngineProvider injectFirst>
-            <MThemeProvider theme={isDarkTheme ? dark : light}>
-                <CssBaseline />
-                {props.children}
+            <MThemeProvider theme={theme}>
+                <StylesThemeProvider theme={theme}>
+                    <CssBaseline />
+                    {props.children}
+                </StylesThemeProvider>
             </MThemeProvider>
         </StyledEngineProvider>
     )

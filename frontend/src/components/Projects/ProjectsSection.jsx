@@ -136,7 +136,7 @@ const ProjectsSection = () => {
         
         <Grid container spacing={4}>
           {projectsData.map((project, index) => (
-            <Grid item xs={12} md={4} key={index}>
+            <Grid size={{ xs: 12, md: 4 }} key={index}>
               <Card className={classes.projectCard}>
                 <CardContent>
                   <Typography variant="h5" className={classes.projectTitle}>
