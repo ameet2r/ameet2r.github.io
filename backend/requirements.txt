@@ -1,4 +1,4 @@
-fastapi==0.104.1
-uvicorn[standard]==0.24.0
-python-dotenv==1.0.0
-resend==0.7.0
+fastapi==0.124.2
+uvicorn[standard]==0.38.0
+python-dotenv==1.2.1
+resend==2.19.0
