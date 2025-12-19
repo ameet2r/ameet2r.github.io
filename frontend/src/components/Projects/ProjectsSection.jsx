@@ -79,7 +79,7 @@ const projectsData = [
     title: 'Motorcycle Weather',
     description: 'Weather forecasting service providing detailed meteorological data for motorcycle enthusiasts and outdoor adventurers across US territories.',
     technologies: ['FastAPI', 'Python', 'Docker', 'React', 'Material-UI', 'JavaScript', 'SPA'],
-    codeLink: '#',
+    codeLink: 'https://github.com/ameet2r/Motorcycle_Weather_UI',
     demoLink: 'https://weather.toorforge.com',
     highlights: ['FastAPI', 'Firebase/Firestore', 'Python', 'Docker', 'React']
   },
@@ -89,7 +89,7 @@ const projectsData = [
     technologies:  ["React", "Vite", "Material-UI (MUI)", "React Router", "Firebase Authentication", "Firebase Admin SDK", "Firestore", "MUI X-Charts",
   "Leaflet", "React-Leaflet", "Python", "FastAPI", "Pydantic", "Uvicorn", "Pytest", "Docker", "Docker Compose", "Nginx", "Railway",
   "Git", "JavaScript", "HTML", "CSS"],
-    codeLink: '#',
+    codeLink: 'https://github.com/ameet2r/workout',
     demoLink: 'https://workout.toorforge.com',
     highlights: ['FastAPI', 'Firebase/Firestore', 'Python', 'Docker', 'React']
   },
